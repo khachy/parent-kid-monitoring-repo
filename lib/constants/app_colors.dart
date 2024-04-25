@@ -7,4 +7,5 @@ class AppColors {
   static Color textFieldTextColor = const Color(0XFF798E76);
   static Color buttonColor = const Color(0XFF798E76);
   static Color whiteColor = const Color(0XFFFFFFFF);
+  static Color redColor =  Colors.red;
 }

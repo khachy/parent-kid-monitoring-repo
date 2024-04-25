@@ -7,7 +7,16 @@ class CustomTextField extends StatelessWidget {
   final String optionText;
   final String hintText;
   final bool obscureText;
-  const CustomTextField({super.key, required this.optionText, required this.hintText, required this.obscureText});
+  final String? Function(String?)? validator;
+  final TextEditingController controller;
+  const CustomTextField({
+    super.key, 
+    required this.optionText, 
+    required this.hintText, 
+    required this.obscureText,
+    required this.validator, 
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +35,8 @@ class CustomTextField extends StatelessWidget {
             height: 4.h,
           ),
           TextFormField(
+            controller: controller,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             style: TextStyle(
               fontFamily: 'Sora',
               fontWeight: FontWeight.w300,
@@ -49,6 +60,17 @@ class CustomTextField extends StatelessWidget {
                 ),
                 borderRadius: BorderRadius.all(Radius.circular(8.r)),
               ),
+              errorBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: AppColors.redColor,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(8.r)),
+              ),
+              errorStyle: TextStyle(
+                fontFamily: 'Sora',
+                fontWeight: FontWeight.w400,
+                fontSize: 12.sp,
+              ),
               hintText: hintText,
               hintStyle: TextStyle(
                 fontFamily: 'Sora',
@@ -58,6 +80,7 @@ class CustomTextField extends StatelessWidget {
               ),
             ),
             obscureText: obscureText,
+            validator: validator,
           ),
         ],
       ),
