@@ -185,7 +185,9 @@ class _CompleteSignUpViewState extends State<CompleteSignUpView> {
                         onTap: () async {
                           if (model.formKeyForWard.currentState!.validate()) {
                             setState(() {
-                             Provider.of<SignUpModel>(context, listen: false).registerUser();
+                             Provider.of<SignUpModel>(context, listen: false).registerUser(
+                              context: context,
+                             );
                             });
                           }
                         },

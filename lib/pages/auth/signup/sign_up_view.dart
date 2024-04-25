@@ -137,11 +137,17 @@ class _SignUpViewState extends State<SignUpView> {
                         buttonText: 'Continue',
                         // onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CompleteSignUpView(),)),
                         onTap: () {
-                          if (model.formKey.currentState!.validate() && model.selectedRelationship != '-Select-') {
+                          if (model.formKey.currentState!.validate()) {
                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CompleteSignUpView(),));
-                          } else {
+                          } else if (model.selectedRelationship != '-Select-') {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: const Text('Please select a relationship!'),
+                              SnackBar(content: Text(
+                                'Please select a relationship!',
+                                style: TextStyle(
+                                  fontFamily: 'Sora',
+                                  fontSize: 14.sp,
+                                  ),
+                                ),
                               backgroundColor: AppColors.redColor,
                               ),
                             );
